@@ -1,12 +1,12 @@
 FROM php:fpm-alpine
-RUN docker-php-ext-install mysqli
-RUN apk upgrade --update && apk add \
+RUN apk update && apk add \
   coreutils \
   freetype-dev \
   libjpeg-turbo-dev \
   libltdl \
   libmcrypt-dev \
   libpng-dev \
-&& docker-php-ext-install -j$(nproc) iconv mcrypt \
-&& docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-&& docker-php-ext-install -j$(nproc) gd
+  icu-dev \
+  libxml2-dev \
+  openssl-dev 
+RUN docker-php-ext-install pdo_mysql iconv mcrypt mbstring intl zip intl gd sockets soap
