@@ -2,13 +2,11 @@ FROM php:apache
 RUN apt-get update && apt-get install -y \
  libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libssl-dev \
  libpng12-dev libicu-dev libxml2-dev libaio-dev unzip \
- && docker-php-ext-install -j$(nproc) iconv mcrypt mbstring intl pdo_mysql zip \
+ && docker-php-ext-install -j$(nproc) iconv mcrypt mbstring intl pdo_mysql zip sockets soap simplexml \
  && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
  && docker-php-ext-install -j$(nproc) gd \
  && pecl install mongodb \
  && docker-php-ext-enable mongodb \
- && docker-php-ext-install -j$(nproc) sockets \
- && docker-php-ext-install -j$(nproc) soap \
  && apt-get clean \
  && a2enmod rewrite
 
