@@ -1,4 +1,4 @@
-# PHP Docker ZTS Console
+# PHP Docker ZTS Console with cron, oci8, mysql and mongo
 
 PHP Environment with following extensions:
 
