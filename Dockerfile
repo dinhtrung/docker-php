@@ -8,8 +8,8 @@ RUN apt-get update && apt-get install -y \
  && pecl install mongodb \
  && docker-php-ext-enable mongodb \
  && docker-php-ext-install pcntl && docker-php-ext-enable pcntl \
- && pecl install pthreads && docker-php-ext-enable pthreads
- && apt-get clean \
+ && pecl install pthreads && docker-php-ext-enable pthreads \
+ && apt-get clean 
 
 ADD instantclient-basic-linux.x64-12.1.0.2.0.zip /tmp/
 ADD instantclient-sdk-linux.x64-12.1.0.2.0.zip /tmp/
