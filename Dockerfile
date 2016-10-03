@@ -24,3 +24,4 @@ RUN unzip /tmp/instantclient-basic-linux.x64-12.1.0.2.0.zip -d /usr/local/ \
  && docker-php-ext-install oci8
 
 RUN mkdir -p /etc/php && touch /etc/php/php.ini && ln -sf /etc/php/php.ini /usr/local/etc/php/php.ini
+RUN usermod -u 1000 www-data && groupmod -g 1000 www-data
