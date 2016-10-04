@@ -27,4 +27,5 @@ RUN unzip /tmp/instantclient-basic-linux.x64-12.1.0.2.0.zip -d /usr/local/ \
 ADD start-cron.sh /usr/sbin/start-cron.sh
 RUN chmod +x /usr/sbin/start-cron.sh && sed -i '/session    required     pam_loginuid.so/c\#session    required     pam_loginuid.so' /etc/pam.d/cron &&\
  mkdir -p /etc/php && touch /etc/php/php.ini && ln -sf /etc/php/php.ini /usr/local/etc/php/php.ini
+RUN usermod -u 1000 www-data && groupmod -g 1000 www-data
 CMD /usr/sbin/start-cron.sh
