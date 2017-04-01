@@ -6,3 +6,4 @@ RUN apk update && apk add --no-cache coreutils freetype-dev libjpeg-turbo-dev li
 && pecl install mongodb && docker-php-ext-enable mongodb \
 && apk del --purge autoconf m4 perl file g++ gcc binutils isl libatomic libc-dev musl-dev make re2c libmagic binutils-libs mpc1 mpfr3 gmp libgomp \
 && /usr/bin/curl -sS https://getcomposer.org/installer | /usr/local/bin/php -- --install-dir=/usr/local/bin --filename=composer
+RUN addgroup -g 1000 projadm && adduser -D -G projadm -u 1000 projadm && sed -i 's/www-data/projadm/' /usr/local/etc/php-fpm.d/www.conf
